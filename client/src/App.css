@@ -1,0 +1,106 @@
+* {
+  font-family: "Raleway";
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body > #root {
+  height: 100%;
+  margin: 0;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  background-image: linear-gradient(to right, #136fac, #136fac);
+  border-bottom: solid 1px white;
+}
+
+.navbar-brand {
+  color: white !important;
+  font-weight: bold;
+}
+
+.navbar-nav > a {
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 5px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav > a > i {
+  font-size: 30px;
+}
+
+.navbar-nav > div > a {
+  color: #ffffff !important;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav a > img {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar button:first-child > i {
+  font-size: 20px;
+}
+
+.navbar button:first-child {
+  background: transparent;
+  border: none;
+  margin-right: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.navbar button:first-child:hover {
+  background: rgb(227, 139, 7, 0.9);
+  border-color: transparent;
+}
+
+.navbar button:first-child:focus {
+  box-shadow: none;
+}
+
+.navbar button:first-child:active {
+  background: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.dropdown-item {
+  color: black;
+}
+
+.dropdown-menu > img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.round-img {
+  border-radius: 50%;
+}

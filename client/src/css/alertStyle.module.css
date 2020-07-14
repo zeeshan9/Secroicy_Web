@@ -1,0 +1,35 @@
+.alert_container_style {
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  width: 320px;
+  z-index: 999;
+}
+
+.alert_style {
+  animation: show-alert 320ms 1, hide-alert 320ms 4.8s 1;
+}
+
+@keyframes show-alert {
+  from {
+    right: -600px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes hide-alert {
+  from {
+    right: 0;
+  }
+  to {
+    right: -600px;
+  }
+}
+
+@media (max-width: 576px) {
+  .alert_container_style {
+    width: 250px;
+  }
+}
