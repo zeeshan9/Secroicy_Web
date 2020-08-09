@@ -13,6 +13,7 @@
   "author": "Zeeshan Mushtaq",
   "license": "MIT",
   "dependencies": {
+    "@pusher/push-notifications-server": "^1.2.0",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "busboy": "^0.3.1",

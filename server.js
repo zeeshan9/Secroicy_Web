@@ -24,10 +24,10 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/posts", require("./routes/api/posts"));
 
-app.use("./poll", poll);
+app.use("/poll", poll);
 
 // server static assets in prodution
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") { 
   // set static assets
   app.use(express.static("client/build"));
 

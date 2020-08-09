@@ -88,6 +88,7 @@ router.post(
     const { email, password } = req.body;
 
     try {
+      console.log(email, "==", password);
       const user = await firebase.auth().getUserByEmail(email);
 
       const hashedPassword = await (
