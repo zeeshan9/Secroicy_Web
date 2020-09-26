@@ -16,6 +16,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <i className='fas fa-envelope'></i>
       </Nav.Link>
       <Nav.Link href='/portal/profile'>Profile</Nav.Link>
+      <Nav.Link href='/portal/location'>mobilelost</Nav.Link>
       <Nav.Link onClick={logout} href='/'>
         Logout
       </Nav.Link>

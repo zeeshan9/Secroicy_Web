@@ -27,13 +27,13 @@ app.use("/api/posts", require("./routes/api/posts"));
 app.use("/poll", poll);
 
 // server static assets in prodution
-if (process.env.NODE_ENV === "production") { 
+if (process.env.NODE_ENV === "production") {
   // set static assets
   app.use(express.static("client/build"));
 
   // body parser middle ware
   // app.use(bodyparser.json());
-  // app.use(bodyparser.urlencoded({ extended: false }));
+  // app.use(bodyparser.urlennpom coded({ extended: false }));
 
   // Enable cors
   // app.use(cors());

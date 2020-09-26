@@ -4,7 +4,7 @@ const router = express.Router();
 const Pusher = require("pusher");
 const PushNotifications = require("@pusher/push-notifications-server");
 
-router.get("/", (req, res) => {
+router.get("/:email", (req, res) => {
   // var pusher = new Pusher({
   //   app_id: "1025470",
   //   key: "8fcea27a86c3e8e27515",
@@ -17,6 +17,8 @@ router.get("/", (req, res) => {
   //   message: "hello world",
   // });
 
+  // const { email } = req.body;
+  const email = req.params.email;
   let beamsClient = new PushNotifications({
     instanceId: "410ee95b-fffc-4c01-aaa5-d7760e0358cb",
     secretKey:
@@ -39,8 +41,8 @@ router.get("/", (req, res) => {
     .catch((error) => {
       console.log("Error:", error);
     });
-
-  res.json({ msg: "Message sent to android" });
+  console.log("sent to android push notification (poll.file)");
+  res.json({ msg: `Message sent to android ${email}` });
 });
 
 router.get("/getdata", (req, res) => {

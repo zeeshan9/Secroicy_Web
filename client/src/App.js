@@ -42,20 +42,22 @@ const App = () => {
 
   return (
     // <MuiThemeProvider theme={theme}>
-    <Provider store={store}>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <Route exact path='/' component={Landing} />
-          <Switch>
-            {/* MyConversations App Routes */}
-            {/* <PortalRoutes exact path='/portal' component={PortalRoutes} /> */}
-            <Route path='/portal' component={PortalRoutes} />
-            <Route component={BasicRoutes} />
-          </Switch>
-        </Fragment>
-      </Router>
-    </Provider>
+    <div className='container-app' style={{ marginTop: 50 }}>
+      <Provider store={store}>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <Route exact path='/' component={Landing} />
+            <Switch>
+              {/* MyConversations App Routes */}
+              {/* <PortalRoutes exact path='/portal' component={PortalRoutes} /> */}
+              <Route path='/portal' component={PortalRoutes} />
+              <Route component={BasicRoutes} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </Provider>
+    </div>
     // </MuiThemeProvider>
   );
 };
