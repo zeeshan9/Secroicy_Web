@@ -3,6 +3,94 @@ const router = express.Router();
 
 const Pusher = require("pusher");
 const PushNotifications = require("@pusher/push-notifications-server");
+const firebase = require("../config/firebase");
+const { check, validationResult } = require("express-validator");
+
+// @route   Post /poll/location
+// @desc    Add location details
+// @access  Private
+router.post(
+  "/location",
+  [
+    check("longitude", "longitude is required").not().isEmpty(),
+    check("latitude", "laritude is required").not().isEmpty(),
+    check("time", "time is required").not().isEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { longitude, latitude, time } = req.body;
+
+    const location = await firebase
+      .firestore()
+      .collection("mobilelocation")
+      .add({
+        longitude,
+        latitude,
+        time,
+      })
+      .then((data) => {
+        console.log("location here");
+        console.log("location here = >" + longitude, latitude, time);
+      });
+
+    res.json("success location" + location);
+  }
+);
+
+// @route   PUT /api/posts/post-image/upload
+// @desc    Upload post image
+// @access  Private
+router.post("/uploadimage", async (req, res) => {
+  if (req.files === null) {
+    return res.status(400).json({ msg: "No file uploaded" });
+  }
+  const path = require("path");
+  const os = require("os");
+  const imageToBeUploaded = {};
+
+  console.log("file came ahere =>");
+  // console.log(req.body.image.name);
+  console.log(req.body);
+
+  const file = req.body.image;
+  const fileExtension = file.mimetype.split("/")[1];
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-27f10.appspot.com/o/${file.name}?alt=media`;
+
+  // const filepath = path.join(os.tmpdir(), file.name.toString());
+  // const filepath = path.join(
+  //   "C:\\Users\\zeesh\\OneDrive\\Pictures\\",
+  //   file.name.toString()
+  // );
+
+  var storageref = firebase.storage().bucket();
+  const metadata = {
+    contentType: file.mimetype,
+  };
+  storageref
+    .upload(req.files.file)
+    .then((snapshot) => {})
+    .then(() => {
+      return firebase
+        .firestore()
+        .collection("mobilelocation")
+        .add({ imageUrl, createdAt: new Date().toISOString() });
+    })
+    .then(() => {
+      return res.json({
+        message: `image uploaded successfully ${req.files.file.name}`,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      console.error(req.files.file);
+      console.error(req.files.file.name);
+      return res.status(500).json({ error: req.files.file });
+    });
+});
 
 router.get("/:email", (req, res) => {
   // var pusher = new Pusher({
