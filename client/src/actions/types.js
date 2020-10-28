@@ -31,6 +31,10 @@ export const POST_REMOVED = "POST_REMOVED";
 export const POST_ERROR = "POST_ERROR";
 export const POST_IMAGE_UPLOADED = "POST_IMAGE_UPLOADED";
 
+// Notification
+export const MESSAGE_SENT = "MESSAGE_SENT";
+export const MESSAGE_ERROR = "MESSAGE_ERROR";
+
 export const ALL_MESSAGES_LOADED = "ALL_MESSAGES_LOADED";
 
 export const GET_LOCATION = "GET_LOCATION";

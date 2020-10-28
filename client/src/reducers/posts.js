@@ -5,6 +5,8 @@ import {
   CLEAR_PROFILE,
   POST_IMAGE_UPLOADED,
   ALL_MESSAGES_LOADED,
+  MESSAGE_ERROR,
+  MESSAGE_SENT,
 } from "../actions/types";
 
 const initialState = {
@@ -33,14 +35,10 @@ export default function (state = initialState, action) {
         loading: false,
         errors: null,
       };
-      return {
-        ...state,
-        posts: payload,
-        loading: false,
-        errors: null,
-      };
-    //   posts added nothing retur in json except succes in string
+      
+    //   posts added nothing return in json except success in string
     case POST_ERROR:
+    case MESSAGE_ERROR:
       return {
         ...state,
         loading: false,
@@ -55,6 +53,7 @@ export default function (state = initialState, action) {
         errors: payload,
       };
     case POST_ADDED:
+    case MESSAGE_SENT:
       return {
         ...state,
         loading: false,

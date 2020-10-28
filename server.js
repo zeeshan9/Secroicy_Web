@@ -27,7 +27,6 @@ app.use("/poll", poll);
 
 app.use("/api/location", require("./routes/api/location"));
 
-
 // server static assets in prodution
 if (process.env.NODE_ENV === "production") {
   // set static assets

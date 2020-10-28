@@ -8,7 +8,8 @@ import { getuserPost, getallmessages } from "../../../actions/posts";
 import { loadUser } from "../../../actions/auth";
 import ChildPostItem from "../post/ChildPostItem";
 
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+// import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import Grid from "@material-ui/core/Grid";
 import NotificationItem from "./NotificationItem";

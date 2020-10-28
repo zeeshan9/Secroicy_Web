@@ -4,6 +4,8 @@ import {
   POST_ADDED,
   POST_ERROR,
   ALL_MESSAGES_LOADED,
+  MESSAGE_SENT,
+  MESSAGE_ERROR
 } from "../actions/types";
 import { setAlert } from "./alert";
 
@@ -84,8 +86,7 @@ export const postMessage = (formData, id) => async (dispatch) => {
   };
 
   try {
-    console.log("formData-->");
-    console.log(formData);
+
     const res = await axios.put(
       `/api/posts/postMessage/${id}`,
       formData,
@@ -93,11 +94,11 @@ export const postMessage = (formData, id) => async (dispatch) => {
     );
 
     dispatch({
-      type: POST_ADDED,
+      type: MESSAGE_SENT,
       payload: res.data,
     });
 
-    dispatch(setAlert("Post Added", "success"));
+    dispatch(setAlert("Message Sent", "success"));
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -105,7 +106,7 @@ export const postMessage = (formData, id) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
     dispatch({
-      type: POST_ERROR,
+      type: MESSAGE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

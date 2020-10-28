@@ -36,7 +36,7 @@ const Location = ({
             You can start your service from here to track your phone
           </div>
         </div>
-      </section>
+      
       {!loading && isAuthenticated && user !== null ? (
         <Fragment>
         <button
@@ -46,12 +46,12 @@ const Location = ({
           Get Location
         </button>
         <TrackPhoneList locations={locations} loading={loading}/>
-        {/* {flag ? <TrackPhoneList locations={locations} loading={loading}/>: false } */}
           </Fragment>
        
       ) : (
         <p>Loading...</p>
       )}
+      </section>
     </Fragment>
   );
 };

@@ -6,41 +6,6 @@ const PushNotifications = require("@pusher/push-notifications-server");
 const firebase = require("../config/firebase");
 const { check, validationResult } = require("express-validator");
 
-// @route   Post /poll/location
-// @desc    Add location details
-// @access  Private
-router.post(
-  "/location",
-  [
-    check("longitude", "Longitude is required").not().isEmpty(),
-    check("latitude", "Latitude is required").not().isEmpty(),
-    check("time", "Time is required").not().isEmpty(),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { longitude, latitude, time } = req.body;
-
-    const location = await firebase
-      .firestore()
-      .collection("mobilelocation")
-      .add({
-        longitude,
-        latitude,
-        time,
-      })
-      .then((data) => {
-        console.log("location here");
-        console.log("location here = >" + longitude, latitude, time);
-      });
-
-    res.json("success location" + location);
-  }
-);
-
 // @route   PUT /api/posts/post-image/upload
 // @desc    Upload post image
 // @access  Private

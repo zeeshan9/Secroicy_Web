@@ -35,14 +35,20 @@ const ChildPostItem = ({ classes, post, userId }) => {
           variant='h5'
           color='primary'
           component={Link}
-          to={"link will be here"}
+          to={"#"}
         >
           {post.mobile}
         </Typography>
         <Typography variant='body2' color='textSecondary'>
           Technology: {post.technology}
+          <br></br>
+          User: {post.name}
+          <br></br>
+          Post Created: {post.time}
         </Typography>
-        <Typography variant='body1'>{post.description}</Typography>
+        <Typography variant='body1'>
+          {post.description}<br></br>
+          </Typography>
         {userId === post.userId ? (
           <Model id={post.id} />
         ) : (

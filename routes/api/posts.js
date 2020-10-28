@@ -25,7 +25,7 @@ router.post(
     }
     const noimg = "gigpic.png";
 
-    const { userId, mobile, technology, imei, description } = req.body;
+    const { userId, mobile, technology, imei, description, time, name } = req.body;
 
     const post = await firebase
       .firestore()
@@ -36,10 +36,13 @@ router.post(
         technology,
         imei,
         description,
+        time,
+        name,
         imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${noimg}?alt=media`,
       })
       .then((data) => {
         console.log("data here");
+        console.log(data.body);
       });
 
     res.json("success " + post);
@@ -50,7 +53,7 @@ router.post(
 // @desc    get all posts
 // @access  Private
 router.get("/getallposts", auth, async (req, res) => {
-  const postCollection = await firebase.firestore().collection("posts").get();
+  const postCollection = await firebase.firestore().collection("posts").orderBy("time").get();
 
   const posts = [];
 
@@ -63,10 +66,12 @@ router.get("/getallposts", auth, async (req, res) => {
       imageUrl: post.data().imageUrl,
       description: post.data().description,
       userId: post.data().userId,
+      time: post.data().time,
+      name: post.data().name,
     });
   });
-
-  res.json(posts);
+  
+  res.json(posts.reverse());
 });
 
 // @route   GET /api/posts/search/:description
@@ -82,10 +87,12 @@ router.get("/search/:description", auth, async (req, res) => {
     postCollection.forEach((post) => {
       if (post.data().imei === description) {
         posts.push({
+          id: post.id,
           mobile: post.data().mobile,
           technology: post.data().technology,
           imei: post.data().imei,
           description: post.data().description,
+          userId: post.data().userId,
         });
       }
     });
@@ -200,7 +207,7 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { message, userId, mobile, description, loginId } = req.body;
+    const { message, userId, mobile, description, loginId, time, name } = req.body;
 
     // const { postid } = req.params.id;
     // console.log("object+ " + req.params.id);
@@ -211,27 +218,22 @@ router.put(
       mobile,
       description,
       loginId,
+      time,
+      name
     });
-    // .collection("posts")
-    // .doc(req.params.id)
-    // .collection("message")
-    // .add({
-    //   message,
-    //   userId,
-    // });
 
     res.json("success" + post);
   }
 );
 
-// @route   Post /api/posts/getallmessages
-// @desc    Add post details
+// @route   Get /api/posts/getallmessages
+// @desc    get post messages
 // @access  Private
 router.get("/getallmessages/:id", [auth], async (req, res) => {
   const messages = [];
   const message = await firebase
     .firestore()
-    .collection("messages")
+    .collection("messages").orderBy("time")
     // .where("userId", "==", req.params.id)
     .get()
     .then((snapshot) => {
@@ -241,15 +243,16 @@ router.get("/getallmessages/:id", [auth], async (req, res) => {
           userId: message.data().userId,
           postId: message.data().postid,
           loginId: message.data().loginId,
-
           mobile: message.data().mobile,
           technology: message.data().technology,
           description: message.data().description,
+          time: message.data().time,
+          name: message.data().name,
         });
       });
     });
 
-  res.json(messages);
+  res.json(messages.reverse());
 });
 
 // @route   get /api/posts/getallposts

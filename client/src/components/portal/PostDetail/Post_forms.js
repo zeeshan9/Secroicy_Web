@@ -18,9 +18,11 @@ const Post_forms = ({
     technology: "",
     description: "",
     imei: "",
+    time: new Date(),
+    name: user !== null ? user.name : ""
   });
-
-  const { userId, mobile, technology, imei, description } = formData;
+  
+  const { userId, mobile, technology, imei, description, time, name } = formData;
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

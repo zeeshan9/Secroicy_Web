@@ -35,11 +35,7 @@ const Posts = ({ getallPost, loadUserProfile, searchPost, posts }) => {
   return (
     <Fragment>
       <section className={styles.section}>
-        <div
-        // className={`${styles.content} ${
-        //   !displaySideNav ? styles.side_nav_hidden : ""
-        // }`}
-        >
+        <div>
           <Alert />
           <div className={styles.heading} style={{ color: "blue" }}>
             <i className='fas fa-user' style={{ color: "blue" }}></i> Lost Phone

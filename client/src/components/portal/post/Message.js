@@ -23,6 +23,8 @@ const Message = ({
     mobile,
     description,
     userId,
+    time: new Date(),
+    name: user !== null ? user.name : ""
   });
 
   const { message, loginId } = formData;
