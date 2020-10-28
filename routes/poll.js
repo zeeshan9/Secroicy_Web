@@ -12,9 +12,9 @@ const { check, validationResult } = require("express-validator");
 router.post(
   "/location",
   [
-    check("longitude", "longitude is required").not().isEmpty(),
-    check("latitude", "laritude is required").not().isEmpty(),
-    check("time", "time is required").not().isEmpty(),
+    check("longitude", "Longitude is required").not().isEmpty(),
+    check("latitude", "Latitude is required").not().isEmpty(),
+    check("time", "Time is required").not().isEmpty(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -52,7 +52,7 @@ router.post("/uploadimage", async (req, res) => {
   const os = require("os");
   const imageToBeUploaded = {};
 
-  console.log("file came ahere =>");
+  console.log("file came here =>");
   // console.log(req.body.image.name);
   console.log(req.body);
 
@@ -93,19 +93,7 @@ router.post("/uploadimage", async (req, res) => {
 });
 
 router.get("/:email", (req, res) => {
-  // var pusher = new Pusher({
-  //   app_id: "1025470",
-  //   key: "8fcea27a86c3e8e27515",
-  //   secret: "43d55bffb956c84b2ebe",
-  //   cluster: "mt1",
-  //   encrypted: true,
-  // });
 
-  // pusher.trigger("my-channel", "my-event", {
-  //   message: "hello world",
-  // });
-
-  // const { email } = req.body;
   const email = req.params.email;
   let beamsClient = new PushNotifications({
     instanceId: "410ee95b-fffc-4c01-aaa5-d7760e0358cb",

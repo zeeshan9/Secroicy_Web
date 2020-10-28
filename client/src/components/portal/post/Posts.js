@@ -6,7 +6,6 @@ import styles from "../../../css/portal/posts/style.module.css";
 import Alert from "../../layout/Alert";
 import PostItem from "./PostItem";
 import { getallPost, searchPost } from "../../../actions/posts";
-// import { loadUser } from "../../../actions/auth";
 import { loadUserProfile } from "../../../actions/auth";
 
 const Posts = ({ getallPost, loadUserProfile, searchPost, posts }) => {

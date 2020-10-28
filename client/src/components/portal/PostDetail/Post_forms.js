@@ -9,7 +9,7 @@ import { setAlert } from "../../../actions/alert";
 
 const Post_forms = ({
   createNewPost,
-  auth: { loading, user, isAuthenticated },
+  auth: {  user },
   history,
 }) => {
   const [formData, setFormData] = useState({
@@ -37,17 +37,13 @@ const Post_forms = ({
     ) {
       setAlert("Please fill all the required fields");
     } else {
-      createNewPost(formData);
+      createNewPost(formData,history);
     }
   };
   return (
     <Fragment>
       <section className={styles.section}>
-        <div
-        //   className={`${styles.content} ${
-        //     !displaySideNav ? styles.side_nav_hidden : ''
-        //   }`}
-        >
+        <div>
           <Alert />
           <div className={styles.heading}>
             <i className='fab fa-black-tie'></i> Add Posts
@@ -67,8 +63,7 @@ const Post_forms = ({
                 onChange={(e) => onChange(e)}
               />
               <Form.Text className='text-muted'>
-                This can be your own company and also a company that you work
-                for
+                  Enter the lost mobile name
               </Form.Text>
             </Form.Group>
 
@@ -82,7 +77,7 @@ const Post_forms = ({
                 onChange={(e) => onChange(e)}
               />
               <Form.Text className='text-muted'>
-                Your position at that company
+                Enter the technology of your lost mobile
               </Form.Text>
             </Form.Group>
 
@@ -96,7 +91,7 @@ const Post_forms = ({
                 onChange={(e) => onChange(e)}
               />
               <Form.Text className='text-muted'>
-                The location where the company is located
+                Enter your mobile unique imei number
               </Form.Text>
             </Form.Group>
 
@@ -110,7 +105,7 @@ const Post_forms = ({
                 onChange={(e) => onChange(e)}
               />
               <Form.Text className='text-muted'>
-                The location where the company is located
+                Enter the discription that how and where ou lost your mobile
               </Form.Text>
             </Form.Group>
             <Button

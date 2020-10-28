@@ -10,7 +10,7 @@ const path = require("path");
 
 // body parser middleware
 const bodyparser = require("body-parser");
-// const cors = require("cors");
+
 const poll = require("./routes/poll");
 // Initialize middleware
 app.use(express.json({ extended: false }));
@@ -23,20 +23,16 @@ app.use(fileUpload());
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 app.use("/api/posts", require("./routes/api/posts"));
-
 app.use("/poll", poll);
+
+app.use("/api/location", require("./routes/api/location"));
+
 
 // server static assets in prodution
 if (process.env.NODE_ENV === "production") {
   // set static assets
   app.use(express.static("client/build"));
 
-  // body parser middle ware
-  // app.use(bodyparser.json());
-  // app.use(bodyparser.urlennpom coded({ extended: false }));
-
-  // Enable cors
-  // app.use(cors());
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));

@@ -36,7 +36,7 @@ router.post(
         technology,
         imei,
         description,
-        imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-27f10.appspot.com/o/${noimg}?alt=media`,
+        imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${noimg}?alt=media`,
       })
       .then((data) => {
         console.log("data here");
@@ -70,16 +70,11 @@ router.get("/getallposts", auth, async (req, res) => {
 });
 
 // @route   GET /api/posts/search/:description
-// @desc    Search for a particular campaign
+// @desc    Search for a particular post by imie
 // @access  Private
 router.get("/search/:description", auth, async (req, res) => {
   const description = req.params.description;
   try {
-    // const posts = await firebase
-    //   .firestore()
-    //   .collection("posts")
-    //   .where("imei", "==", description) //new RegExp(description, "i")
-    //   .get();
 
     const postCollection = await firebase.firestore().collection("posts").get();
     const posts = [];
@@ -113,7 +108,7 @@ router.put("/post-image/upload/:id", auth, async (req, res) => {
   const imageToBeUploaded = {};
   const file = req.files.file;
   const fileExtension = file.mimetype.split("/")[1];
-  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-27f10.appspot.com/o/${file.name}?alt=media`;
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${file.name}?alt=media`;
 
   // const filepath = path.join(os.tmpdir(), file.name.toString());
   const filepath = path.join(

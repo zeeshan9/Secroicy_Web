@@ -16,7 +16,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <i className='fas fa-envelope'></i>
       </Nav.Link>
       <Nav.Link href='/portal/profile'>Profile</Nav.Link>
-      <Nav.Link href='/portal/location'>mobilelost</Nav.Link>
+      <Nav.Link href='/portal/location'>Cell-Tracking</Nav.Link>
       <Nav.Link onClick={logout} href='/'>
         Logout
       </Nav.Link>
@@ -32,7 +32,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
   return (
     <CustomNavbar bg='dark' expand='lg'>
-      <CustomNavbar.Brand href='/'>
+      <CustomNavbar.Brand href='#'>
         <i className='fab fa-cloudversify'></i> Secroicy
       </CustomNavbar.Brand>
       <CustomNavbar.Toggle aria-controls='basic-navbar-nav' />

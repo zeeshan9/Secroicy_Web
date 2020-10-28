@@ -100,16 +100,9 @@ export const login = (email, password) => async (dispatch) => {
         token: res.data.token,
       },
     });
-    console.log("above loaduser");
-    dispatch(loadUser());
-    console.log("below loaduser");
-  } catch (err) {
-    // const errors = err.response.data.errors;
-    console.log("errorr here");
-    // if (errors) {
-    //   errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    // }
 
+    dispatch(loadUser());
+  } catch (err) {
     dispatch({
       type: LOGIN_FAILED,
     });
@@ -123,7 +116,7 @@ export const logout = () => (dispatch) => {
 };
 
 // Upload profile picture
-export const uploadProfilePicture = (file) => async (dispatch) => {
+export const uploadProfilePicture = (file, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -147,11 +140,13 @@ export const uploadProfilePicture = (file) => async (dispatch) => {
     });
 
     dispatch(setAlert("Profile picture uploaded", "success"));
+
+    //history.push('/portal/posts');
   } catch (err) {
-    if (err.response.status === 500) {
+    if (err.response ? err.response.status : 200 === 500) {
       dispatch(setAlert("There was a problem with the server", "danger"));
     } else {
-      dispatch(setAlert(err.response.data.msg, "danger"));
+      dispatch(setAlert(err.response ? err.response.data.msg: 'post exception', "danger"));
     }
   }
 };

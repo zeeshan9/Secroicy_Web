@@ -17,15 +17,17 @@ export const getallPost = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
+    console.log("Get all post exception in action/posts");
+    // dispatch({
+    //   type: POST_ERROR,
+    //   payload: { msg: err.response ? err.response.statusText :'', 
+    //   status: err.response ? err.response.status :''},
+    // });
   }
 };
 
 // Create new post
-export const createNewPost = (formData) => async (dispatch) => {
+export const createNewPost = (formData, history) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -42,6 +44,9 @@ export const createNewPost = (formData) => async (dispatch) => {
     });
 
     dispatch(setAlert("Post Added", "success"));
+
+    history.push('/portal/posts');
+
   } catch (err) {
     const errors = err.response.data.errors;
 

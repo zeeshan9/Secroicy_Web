@@ -56,7 +56,7 @@ router.post(
           name,
           password: await bcrypt.hash(password, salt),
           createdAt: new Date().toISOString(),
-          imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-27f10.appspot.com/o/${noimg}?alt=media`,
+          imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${noimg}?alt=media`,
           mobilelost,
           contactinfo,
           address,
@@ -98,9 +98,7 @@ router.put("/profile-picture/upload", auth, async (req, res) => {
   const imageToBeUploaded = {};
   const file = req.files.file;
   const fileExtension = file.mimetype.split("/")[1];
-  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-27f10.appspot.com/o/${file.name}?alt=media`;
-  //`https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/${file.name}?alt=media`;
-
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${file.name}?alt=media`;
   // const filepath = path.join(os.tmpdir(), file.name.toString());
   const filepath = path.join(
     "C:\\Users\\zeesh\\OneDrive\\Pictures\\",
@@ -117,6 +115,7 @@ router.put("/profile-picture/upload", auth, async (req, res) => {
     .then((snapshot) => {
       // return snapshot.ref.getDownloadURL();
       // console.log("Uploaded a  file!");
+      //gs://secroicy-b5ba8.appspot.com/logan.jpg
     })
     .then(() => {
       return firebase

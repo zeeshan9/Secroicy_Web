@@ -5,9 +5,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { uploadProfilePicture } from "../../../actions/auth";
-import { Nav } from "react-bootstrap";
 
-const ProfilePicture = ({ uploadProfilePicture }) => {
+const ProfilePicture = ({ uploadProfilePicture, history }) => {
   const [formData, setFormData] = useState({
     file: "",
   });
@@ -20,7 +19,7 @@ const ProfilePicture = ({ uploadProfilePicture }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    uploadProfilePicture(file);
+    uploadProfilePicture(file, history);
   };
 
   return (
@@ -36,15 +35,7 @@ const ProfilePicture = ({ uploadProfilePicture }) => {
       <Link type='button' to='/portal/posts/addpost'>
         ADD NEW POST
       </Link>
-      {/* <MuiLink
-        component={Link}
-        to={"/portal/posts/addpost"}
-        color='primary'
-        type='button'
-        variant='h6'
-      >
-        Add new Post
-      </MuiLink> */}
+
     </Fragment>
   );
 };

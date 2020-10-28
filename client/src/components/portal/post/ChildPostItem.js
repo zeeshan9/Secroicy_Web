@@ -1,16 +1,12 @@
 import React, { Fragment } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
-import { Badge, Modal, Button } from "react-bootstrap";
 import Model from "./Model";
 import Message from "./Message";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import image from "../../../img/gigpic.png";
 
 const styles = {
   card: {

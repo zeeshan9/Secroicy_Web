@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import Grid from "@material-ui/core/Grid";
 import ChildPostItem from "./ChildPostItem";
-import Profile from "./Profile";
 import HomeProfile from "./HomeProfile";
 import { connect } from "react-redux";
 
@@ -51,7 +50,7 @@ const PostItem = ({
         </Grid>
         <Grid item xs={4}>
           <HomeProfile />
-          {/* <Profile /> */}
+
         </Grid>
       </Grid>
     </MuiThemeProvider>
