@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import PropTypes from "prop-types";
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
@@ -25,12 +25,13 @@ const theme = createMuiTheme({
     },
   });
 
- const TrackPhoneList = (locations, loading) => {
+ const TrackPhoneList = ({locations, loading}) => {
+   
     return (
     <MuiThemeProvider theme={theme}>
       <Grid container spacing={3}>
         <Grid item xs={8}>
-    <p>{locations.length}</p>
+
           { locations.length > 0  ? (
             locations.map((location) => (
               <CellPhoneDataList

@@ -38,7 +38,7 @@ const styles = {
           {location.mobile}
         </Typography>
         <Typography variant='body2' color='textSecondary'>
-            Latitude: {location.technology}
+            Latitude: {location.latitude}
         </Typography>
         <Typography variant='body1'>Longitude: {location.longitude}</Typography>
         <Typography variant='body1'>Time: {location.time}</Typography>
