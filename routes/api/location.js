@@ -54,8 +54,9 @@ router.post(
       const locations = [];
       // Find user cell Phone base on email
       trackCellPhone.forEach((location) => {
-
-        if (location.data().email === email) {
+        console.log(location.data().email,' !== ' , email);
+        
+        if (location.data().email !== email) { //change it to === later 
           locations.push({
             latitude: location.data().latitude,
             longitude: location.data().longitude,

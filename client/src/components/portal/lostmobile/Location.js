@@ -2,28 +2,30 @@ import React, { Fragment, useEffect } from "react";
 import "../../../css/location/style.module.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getlocation } from "../../../actions/location";
+import { getTrackMobileData, getlocation } from "../../../actions/location";
 import PropTypes from "prop-types";
 import { loadUserProfile } from "../../../actions/auth";
 import styles from "../../../css/portal/profile-forms/style.module.css";
 import TrackPhoneList from "./TrackPhoneList";
 
 const Location = ({
-  location: { locations, errors },
+  location: { locations, location, errors },
+  getTrackMobileData,
   getlocation,
   loadUserProfile,
   auth: { user, loading, isAuthenticated },
 }) => {
   useEffect(() => {
     loadUserProfile();
-    getlocation("email@gmail.com");
-  }, [loadUserProfile, getlocation]);
+  }, [loadUserProfile]);
 
-  var flag = false;
-
+  useEffect(() => {
+    if(user !== null) {
+      getTrackMobileData(user.email);
+    }
+  },[user])
   const locationHandler = (email) => {
     getlocation(email);
-    flag=true;
   };
   return (
     <Fragment>
@@ -43,7 +45,7 @@ const Location = ({
           onClick={() => locationHandler(user.email)}
           className='btn btn-primary'
           >
-          Get Location
+          Track My Cell Phone
         </button>
         <TrackPhoneList locations={locations} loading={loading}/>
           </Fragment>
@@ -57,8 +59,8 @@ const Location = ({
 };
 
 Location.propTypes = {
+  getTrackMobileData: PropTypes.func.isRequired,
   getlocation: PropTypes.func.isRequired,
-  // location: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -67,6 +69,6 @@ const mapStateToProps = (state) => ({
   loadUserProfile: PropTypes.func.isRequired,
 });
 
-export default connect(mapStateToProps, { getlocation, loadUserProfile })(
+export default connect(mapStateToProps, { getTrackMobileData, loadUserProfile, getlocation  })(
   Location
 );

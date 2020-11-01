@@ -1,4 +1,4 @@
-import { GET_LOCATION, LOCATION_ERROR } from "../actions/types";
+import { GET_LOCATION, LOCATION_ERROR,INITIAT_CELL_TRACKING } from "../actions/types";
 
 const initialState = {
   location: null,
@@ -18,6 +18,13 @@ export default function (state = initialState, action) {
         loading: false,
         errors: null,
       };
+      case INITIAT_CELL_TRACKING:
+        return {
+          ...state,
+          location: payload,
+          loading: false,
+          errors: null,
+        };
     case LOCATION_ERROR:
       return {
         ...state,

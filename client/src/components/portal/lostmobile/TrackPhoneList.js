@@ -51,13 +51,14 @@ const theme = createMuiTheme({
 }
 
 TrackPhoneList.propTypes = {
-    // getallPost: PropTypes.func.isRequired,
+    // getuserPost: PropTypes.func.isRequired,
     // auth: PropTypes.object.isRequired,
   };
   
   const mapStateToProps = (state) => ({
+    //posts: state.posts
     //auth: state.auth,
   });
   export default TrackPhoneList;
-  //export default connect(mapStateToProps)(TrackPhoneList);
+  //export default connect(mapStateToProps,{ getuserPost })(TrackPhoneList);
   

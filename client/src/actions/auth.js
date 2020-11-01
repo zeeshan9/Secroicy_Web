@@ -13,6 +13,7 @@ import {
 } from "../actions/types";
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
+import { getallPost } from "./posts";
 
 // Load user
 export const loadUser = () => async (dispatch) => {
@@ -141,12 +142,13 @@ export const uploadProfilePicture = (file, history) => async (dispatch) => {
 
     dispatch(setAlert("Profile picture uploaded", "success"));
 
+    getallPost();
     //history.push('/portal/posts');
   } catch (err) {
     if (err.response ? err.response.status : 200 === 500) {
       dispatch(setAlert("There was a problem with the server", "danger"));
     } else {
-      dispatch(setAlert(err.response ? err.response.data.msg: 'post exception', "danger"));
+      dispatch(setAlert(err.response ? err.response.data.msg: 'Pofile image exception', "danger"));
     }
   }
 };
@@ -179,6 +181,7 @@ export const uploadPostImage = (file, id) => async (dispatch) => {
     // });
 
     dispatch(setAlert(`Profile picture uploaded`, "success"));
+    getallPost();
   } catch (err) {
     if (err.response.status === 500) {
       dispatch(setAlert("There was a problem with the server", "danger"));

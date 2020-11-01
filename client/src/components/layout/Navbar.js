@@ -32,7 +32,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
   return (
     <CustomNavbar bg='dark' expand='lg'>
-      <CustomNavbar.Brand href='#'>
+      <CustomNavbar.Brand href='/portal/posts'>
         <i className='fab fa-cloudversify'></i> Secroicy
       </CustomNavbar.Brand>
       <CustomNavbar.Toggle aria-controls='basic-navbar-nav' />
