@@ -44,8 +44,8 @@ router.post(
         console.log("data here");
         console.log(data.body);
       });
-
-    res.json("success " + post);
+  
+    res.json(post);
   }
 );
 
@@ -144,6 +144,8 @@ router.put("/post-image/upload/:id", auth, async (req, res) => {
       console.error(err);
       return res.status(500).json({ error: "something went wrong" });
     });
+
+    
 });
 var nodemailer = require("nodemailer");
 const creds = require("../../utils/emailcreds");
