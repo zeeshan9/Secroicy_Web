@@ -4,7 +4,6 @@ import "../../../css/portal/profile/style.css";
 import topImage from "../../../img/eyesblue.png";
 import rightImage from "../../../img/mobilephone.png";
 import { connect } from "react-redux";
-import Alert from "../../layout/Alert";
 import { loadUserProfile } from "../../../actions/auth";
 import { Link } from "react-router-dom";
 
@@ -32,24 +31,13 @@ const Profile = ({
                       <img src={user.imageUrl} className='rounded-circle' />
                     </div>
                   ) : (
-                    <img
-                      src='https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png'
-                      className='rounded-circle'
-                    />
+                    <div className='profile-header-section1'>
+                      <img src={user.imageUrl} className='rounded-circle' />
+                    </div>
                   )}
                 </div>
                 <div className='col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center'>
-                  {/* <button
-                    id='btn-contact'
-                    data-toggle='modal'
-                    data-target='#contact'
-                    className='btn btn-success btn-block follow'
-                  >
-                    Contact me
-                  </button> */}
-                  {/* <button className='btn btn-warning btn-block'>
-                    Descargar Curriculum
-                  </button> */}
+ 
                 </div>
                 <div className='row user-detail-row'>
                   <div className='col-md-12 col-sm-12 user-detail-section2 pull-left'>

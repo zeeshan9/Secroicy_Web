@@ -19,11 +19,7 @@ const HomeProfile = ({ auth: { loading, user, isAuthenticated } }) => {
           <div className={styles.container}>
             <div className={styles.avatar_flip}>
               <img src={user.imageUrl} height='150' width='150' />
-              <img
-                src='http://i1112.photobucket.com/albums/k497/animalsbeingdicks/abd-3-12-2015.gif~original'
-                height='150'
-                width='150'
-              />
+              <img src={user.imageUrl} height='150' width='150' />
             </div>
             <h2>{user.displayName}</h2>
             <h4> {user.email}</h4>

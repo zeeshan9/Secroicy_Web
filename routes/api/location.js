@@ -62,6 +62,7 @@ router.post(
             longitude: location.data().longitude,
             time: location.data().time,
             email: location.data().email,
+            imageUrl: location.data().imageUrl,
           });
         }
       });

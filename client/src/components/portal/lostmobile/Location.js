@@ -47,6 +47,7 @@ const Location = ({
           >
           Track My Cell Phone
         </button>
+        <hr></hr>
         <TrackPhoneList locations={locations} loading={loading}/>
           </Fragment>
        

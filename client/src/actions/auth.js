@@ -142,7 +142,8 @@ export const uploadProfilePicture = (file, history) => async (dispatch) => {
 
     dispatch(setAlert("Profile picture uploaded", "success"));
 
-    getallPost();
+    dispatch(loadUserProfile());
+    
     //history.push('/portal/posts');
   } catch (err) {
     if (err.response ? err.response.status : 200 === 500) {
@@ -153,7 +154,7 @@ export const uploadProfilePicture = (file, history) => async (dispatch) => {
   }
 };
 
-// Upload profile picture
+// Upload Post picture
 export const uploadPostImage = (file, id) => async (dispatch) => {
   try {
     const config = {
@@ -175,13 +176,9 @@ export const uploadPostImage = (file, id) => async (dispatch) => {
       config
     );
 
-    // dispatch({
-    //   type: POST_IMAGE_UPLOADED,
-    //   payload: res.data.avatar,
-    // });
+    dispatch(getallPost());
 
     dispatch(setAlert(`Profile picture uploaded`, "success"));
-    getallPost();
   } catch (err) {
     if (err.response.status === 500) {
       dispatch(setAlert("There was a problem with the server", "danger"));
