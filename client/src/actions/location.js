@@ -30,8 +30,7 @@ export const getlocation = (email) => async (dispatch) => {
       type: INITIAT_CELL_TRACKING,
       payload: res.data,
     });
-    dispatch(setAlert("Post Added", "success"));
-//    dispatch(setAlert("Request has been Initiated", "success"));
+   dispatch(setAlert("Request has been Initiated", "success"));
 
   } catch (err) {
     dispatch({

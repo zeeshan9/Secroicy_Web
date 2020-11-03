@@ -8,7 +8,7 @@ const PrivateRoute = ({ auth, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        !auth.isAuthenticated && !auth.loading ? (
+        !auth.loading && !auth.isAuthenticated  ? (
           <Redirect to='/login' />
         ) : (
           <Component {...props} />

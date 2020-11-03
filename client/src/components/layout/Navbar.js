@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
@@ -17,7 +18,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </Nav.Link>
       <Nav.Link href='/portal/profile'>Profile</Nav.Link>
       <Nav.Link href='/portal/location'>Cell-Tracking</Nav.Link>
-      <Nav.Link onClick={logout} href='/'>
+      <Nav.Link onClick={logout} href='#'>
         Logout
       </Nav.Link>
     </Nav>
@@ -37,7 +38,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
       </CustomNavbar.Brand>
       <CustomNavbar.Toggle aria-controls='basic-navbar-nav' />
       <CustomNavbar.Collapse id='basic-navbar-nav'>
-        {!isAuthenticated && loading ? normalLinks : authLinks}
+        {loading && !isAuthenticated ? normalLinks : authLinks}
       </CustomNavbar.Collapse>
     </CustomNavbar>
   );

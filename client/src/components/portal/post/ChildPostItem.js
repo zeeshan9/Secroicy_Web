@@ -30,6 +30,7 @@ const ChildPostItem = ({ classes, post, userId }) => {
         title='ProfileImage'
         className={classes.image}
       />
+
       <CardContent className={classes.content}>
         <Typography
           variant='h5'
