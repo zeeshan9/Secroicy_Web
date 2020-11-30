@@ -37,11 +37,13 @@ const styles = {
         >
           {location.mobile}
         </Typography>
-        <Typography variant='body2' color='textSecondary'>
+        <Typography variant='body1' color='textSecondary'>
             Latitude: {location.latitude}
         </Typography>
         <Typography variant='body1'>Longitude: {location.longitude}</Typography>
-        <Typography variant='body1'>Time: {location.time}</Typography>
+        <Typography variant='body2'>Time: {location.time}</Typography>
+
+        <a style={{display: "table-cell"}} href={`https://www.google.com/maps/search/?api=1&query=${location.longitude},${location.latitude}`} target="_blank">Open Map</a>
         
       </CardContent>
     </Card>
