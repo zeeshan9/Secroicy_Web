@@ -43,7 +43,7 @@ const styles = {
         <Typography variant='body1'>Longitude: {location.longitude}</Typography>
         <Typography variant='body2'>Time: {location.time}</Typography>
 
-        <a style={{display: "table-cell"}} href={`https://www.google.com/maps/search/?api=1&query=${location.longitude},${location.latitude}`} target="_blank">Open Map</a>
+        <a style={{display: "table-cell"}} href={`https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`} target="_blank">Open Map</a>
         
       </CardContent>
     </Card>

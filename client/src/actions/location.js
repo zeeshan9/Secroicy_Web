@@ -24,7 +24,7 @@ export const getTrackMobileData = (email) => async (dispatch) => {
 export const getlocation = (email) => async (dispatch) => {
   try {
 
-    const res = await axios.get(`/poll/${email}`);
+    const res = await axios.get(`/poll/Trigger/${email}`);
 
     dispatch({
       type: INITIAT_CELL_TRACKING,

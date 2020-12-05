@@ -28,11 +28,11 @@ const Profile = ({
                 <div className='col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center'>
                   {!loading && isAuthenticated && user !== null ? (
                     <div className='profile-header-section1'>
-                      <img src={user.imageUrl} className='rounded-circle' />
+                      <img src={user?.imageUrl} className='rounded-circle' />
                     </div>
                   ) : (
                     <div className='profile-header-section1'>
-                      <img src={user.imageUrl} className='rounded-circle' />
+                      <img src={user?.imageUrl} className='rounded-circle' />
                     </div>
                   )}
                 </div>

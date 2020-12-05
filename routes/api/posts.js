@@ -119,7 +119,7 @@ router.put("/post-image/upload/:id", auth, async (req, res) => {
 
   // const filepath = path.join(os.tmpdir(), file.name.toString());
   const filepath = path.join(
-    "C:\\Users\\zeesh\\OneDrive\\Pictures\\",
+    "C:\\Users\\qasim\\OneDrive\\Pictures\\",
     file.name.toString()
   );
 

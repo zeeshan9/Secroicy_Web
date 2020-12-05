@@ -101,15 +101,20 @@ router.put("/profile-picture/upload", auth, async (req, res) => {
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${file.name}?alt=media`;
   // const filepath = path.join(os.tmpdir(), file.name.toString());
   const filepath = path.join(
-    "C:\\Users\\zeesh\\OneDrive\\Pictures\\",
+    "C:\\Users\\qasim\\OneDrive\\Pictures\\",
     file.name.toString()
   );
+
+ 
 
   var storageref = firebase.storage().bucket();
   const metadata = {
     contentType: file.mimetype,
   };
   // const task = storageref.child(file.name).put(file, metadata);
+
+  
+  console.log(filepath," second arg: " , imageUrl)
   storageref
     .upload(filepath)
     .then((snapshot) => {

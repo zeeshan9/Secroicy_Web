@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix client && npm run build --prefix client"
   },
-  "author": "Zeeshan Mushtaq",
+  "author": "Ramsha",
   "license": "MIT",
   "dependencies": {
     "@pusher/push-notifications-server": "^1.2.0",
