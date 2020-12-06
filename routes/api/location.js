@@ -48,6 +48,7 @@ router.post(
   // @access  public
   router.get("/:email", async (req, res) => {
     const email = req.params.email;
+    console.log("Email=" +email)
     try {
   
       const trackCellPhone = await firebase.firestore().collection("mobilelocation").orderBy("time").get();
@@ -56,7 +57,7 @@ router.post(
       trackCellPhone.forEach((location) => {
         console.log(location.data().email,' !== ' , email);
         
-        if (location.data().email !== email) { //change it to === later 
+        if (location.data().email === email) { //change it to === later 
           locations.push({
             latitude: location.data().latitude,
             longitude: location.data().longitude,

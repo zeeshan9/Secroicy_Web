@@ -71,8 +71,8 @@ router.get("/getdata", (req, res) => {
 
 router.get("/Trigger/:email", (req, res) => {
   let beamsClient = new PushNotifications({
-    instanceId: '410ee95b-fffc-4c01-aaa5-d7760e0358cb',
-    secretKey: '53BB2DA4F848423CE135F8F53BCEED7F379BE1F17D172CF17EB469EA2C4D4702'
+    instanceId: 'b17d4827-687e-4155-9507-b19b2d9e407a',
+    secretKey: 'AECDAAB8DD365AC5CEB0A6CE25A60B56DE848C4CF4A05BE26841ABA471930F2D'
   });
 
   var channelName= 'debug-'+ req.params.email.trim().toLowerCase();
