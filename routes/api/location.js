@@ -51,17 +51,17 @@ router.post(
     console.log("Email=" +email)
     try {
   
-      const trackCellPhone = await firebase.firestore().collection("mobilelocation").orderBy("time").get();
+      const trackCellPhone = await firebase.firestore().collection("mobilelocation").orderBy("createdAt").get();
       const locations = [];
       // Find user cell Phone base on email
       trackCellPhone.forEach((location) => {
-        console.log(location.data().email,' !== ' , email);
+        console.log(location.data().email,' === ' , email);
         
         if (location.data().email === email) { //change it to === later 
           locations.push({
             latitude: location.data().latitude,
             longitude: location.data().longitude,
-            time: location.data().time,
+            time: location.data().createdAt,
             email: location.data().email,
             imageUrl: location.data().imageUrl,
           });

@@ -14,13 +14,14 @@ const path = require("path");
 // @access  Private
 router.post("/uploaddata", async (req, res) => {
 
-  const imageName = "hiddenimage.png";
+  const { email, longitude, latitude, time, encodedimage } = req.body;
+  const imageName = "hiddenimage"+time+".png";
   
   console.log("file came here");
   
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${imageName}?alt=media`;
   
-  const { email, longitude, latitude, time, encodedimage } = req.body;
+  console.log(req.body);
   
    // Convert base64 to buffer
     const buffer = Buffer.from(encodedimage, "base64");
