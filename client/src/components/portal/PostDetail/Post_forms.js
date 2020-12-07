@@ -17,20 +17,15 @@ const Post_forms = ({
 
 const{values, handleChange, handleSubmit, touched, errors} = useFormik({
 	initialValues: {
-		//userId: user !== null ? user.id : "",
 		mobile: "",
 		technology: "",
 		description: "",
 		imei: "",
 		time: new Date(),
-		//name: user !== null ? user.name : ""
 	},
-	//enableReinitialize: true,
 	onSubmit: values => {
-		console.log("object==")
 		values.userId = user ? user.id : ""
 		values.name = user ? user.name : ""
-		console.log(values);
 		createNewPost(values,history);
 	},
 
@@ -41,38 +36,8 @@ const{values, handleChange, handleSubmit, touched, errors} = useFormik({
 		description: Yup.string().required('Required'),
 	})
 })
-
-	// const [formData, setFormData] = useState({
-	//   userId: user !== null ? user.id : "",
-	//   mobile: "",
-	//   technology: "",
-	//   description: "",
-	//   imei: "",
-	//   time: new Date(),
-	//   name: user !== null ? user.name : ""
-	// });
 	
 	const { userId, mobile, technology, imei, description, time, name } = values;
-	// var isImeiLegth = false;
-	// const onChange = (e) => {
-	//   // isImeiLegth = e.target.name === 'imei' && e.target.value.length == 25 ? true : false;
-	//   setFormData({ ...formData, [e.target.name]: e.target.value });
-	// };
-
-	// const onSubmit = (e) => {
-	//   e.preventDefault();
-	//   if (
-	//     userId === "" ||
-	//     mobile === "" ||
-	//     technology === "" ||
-	//     imei === "" ||
-	//     description === ""
-	//   ) {
-	//     setAlert("Please fill all the required fields");
-	//   } else {
-	//     createNewPost(formData,history);
-	//   }
-	// };
 	return (
 		<Fragment>
 			<section className={styles.section}>

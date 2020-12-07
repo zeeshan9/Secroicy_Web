@@ -48,14 +48,12 @@ router.post(
   // @access  public
   router.get("/:email", async (req, res) => {
     const email = req.params.email;
-    console.log("Email=" +email)
     try {
   
       const trackCellPhone = await firebase.firestore().collection("mobilelocation").orderBy("time").get();
       const locations = [];
       // Find user cell Phone base on email
       trackCellPhone.forEach((location) => {
-        console.log(location.data().email,' <= location api check => ' , email);
         
         if (location.data().email === email) { 
           locations.push({

@@ -99,7 +99,7 @@ router.put("/profile-picture/upload", auth, async (req, res) => {
   const file = req.files.file;
   const fileExtension = file.mimetype.split("/")[1];
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${file.name}?alt=media`;
-  // const filepath = path.join(os.tmpdir(), file.name.toString());
+
   const filepath = path.join(
     "C:\\Users\\qasim\\OneDrive\\Pictures\\",
     file.name.toString()
@@ -111,16 +111,11 @@ router.put("/profile-picture/upload", auth, async (req, res) => {
   const metadata = {
     contentType: file.mimetype,
   };
-  // const task = storageref.child(file.name).put(file, metadata);
 
-  
-  console.log(filepath," second arg: " , imageUrl)
   storageref
     .upload(filepath)
     .then((snapshot) => {
-      // return snapshot.ref.getDownloadURL();
-      // console.log("Uploaded a  file!");
-      //gs://secroicy-b5ba8.appspot.com/logan.jpg
+
     })
     .then(() => {
       return firebase

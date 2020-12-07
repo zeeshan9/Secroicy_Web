@@ -41,8 +41,6 @@ console.log(req.body);
         imageUrl: `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${noimg}?alt=media`,
       })
       .then((data) => {
-        console.log("data here");
-        console.log(data.body);
       });
   
     res.json(post);

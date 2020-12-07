@@ -37,9 +37,12 @@ export const createNewPost = (formData, history) => async (dispatch) => {
   };
 
   try {
+    console.log("values== >");
+		console.log(formData);
+
     const res = await axios.post("/api/posts/addPostDetails", formData, config);
     console.log("formData=>");
-    console.log(formData);
+    console.log(res);
 
     dispatch({
       type: POST_ADDED,
