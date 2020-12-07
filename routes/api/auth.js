@@ -51,17 +51,7 @@ router.get("/loaduserprofile", auth, async (req, res) => {
 
         return res.json(userdata);
       });
-    // user = { ...userinfo };
-    // user = { ...user, userinfo };
 
-    // const mobilelost = userinfo.data().mobilelost;
-    // const contactinfo = userinfo.data().contactinfo;
-    // const description = userinfo.data().description;
-
-    // console.log(mobilelost, contactinfo, description);
-
-    // const temp = { ...userinfo, mobilelost, contactinfo, description };
-    // res.json(temp);
   } catch (err) {
     return res.status(500).json({ msg: err.message });
   }

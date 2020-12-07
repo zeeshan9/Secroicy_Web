@@ -20,9 +20,7 @@ router.post("/uploaddata", async (req, res) => {
   console.log("file came here");
   
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${imageName}?alt=media`;
-  
-  console.log(req.body);
-  
+    
    // Convert base64 to buffer
     const buffer = Buffer.from(encodedimage, "base64");
 
@@ -33,12 +31,10 @@ router.post("/uploaddata", async (req, res) => {
     console.log(path.resolve(__dirname, imageName))
     var storageref = firebase.storage().bucket();
     
-    console.log("fsfile " + fs.__dirname);   
-    console.log(buffer);
 
   storageref
     .upload(imagePath)
-    .then((snapshot) => { console.log("snapsot "); console.log(snapshot)})
+    .then((snapshot) => { })
     .then(() => { 
       return firebase
         .firestore()
@@ -53,6 +49,7 @@ router.post("/uploaddata", async (req, res) => {
          });
     })
     .then(() => {
+      // getUserCellphone();
       return res.json({
         message: `image uploaded successfully ${fs}`,
       });
@@ -61,8 +58,20 @@ router.post("/uploaddata", async (req, res) => {
       console.error(err);
       return res.status(500).json({ error: req });
     });
+
+
+    console.log("Image sent to firebase");
 });
 
+// function getUserCellphone() {
+//   console.log('camehere')
+//   const userinfo = async() => await firebase
+//       .firestore()
+//       .collection("users")
+//       .get();
+//       console.log("object==?")
+//       //console.log(userInfo)
+// }
 
 router.get("/getdata", (req, res) => {
   pusher.trigger("my-channel", "my-event-1", "my-channel");
@@ -93,5 +102,32 @@ router.get("/Trigger/:email", (req, res) => {
 
   return res.json("success");
 });
+
+
+// ===========================
+// @route   Post /getphoneNo
+// @desc    Get current logged in user
+// @access  Private
+router.post("/getphoneno", async (req, res) => {
+  try {
+    console.log('poll/ testing');
+    
+    const user = await firebase.auth().getUserByEmail(req.body.email);
+    
+    const phoneNo = await (
+      await firebase.firestore().collection("users").doc(user.uid).get()
+      ).data().contactinfo;
+      
+      return res.json({ phoneNo})
+   
+  } catch (err) {
+    return res.status(500).json({ msg: err.message });
+  }
+});
+//--------------------------------------
+
+
+
+
 
 module.exports = router;

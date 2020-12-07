@@ -273,7 +273,6 @@ router.get("/getuserposts/:id", auth, async (req, res) => {
       description: post.data().description,
       userId: post.data().userId,
     });
-    // }
   });
   res.json(posts);
 });
