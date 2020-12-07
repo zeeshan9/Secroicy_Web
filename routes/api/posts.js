@@ -24,7 +24,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const noimg = "gigpic.png";
-
+console.log(req.body);
     const { userId, mobile, technology, imei, description, time, name } = req.body;
 
     const post = await firebase

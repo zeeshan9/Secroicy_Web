@@ -22,7 +22,7 @@ export const getallPost = () => async (dispatch) => {
     console.log("Get all post exception in action/posts");
     // dispatch({
     //   type: POST_ERROR,
-    //   payload: { msg: err.response ? err.response.statusText :'', 
+    //   payload: { msg: err.response ? err.response.statusText :'',  
     //   status: err.response ? err.response.status :''},
     // });
   }
@@ -37,8 +37,9 @@ export const createNewPost = (formData, history) => async (dispatch) => {
   };
 
   try {
-    console.log(formData);
     const res = await axios.post("/api/posts/addPostDetails", formData, config);
+    console.log("formData=>");
+    console.log(formData);
 
     dispatch({
       type: POST_ADDED,
