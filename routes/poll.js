@@ -49,7 +49,6 @@ router.post("/uploaddata", async (req, res) => {
          });
     })
     .then(() => {
-      // getUserCellphone();
       return res.json({
         message: `image uploaded successfully ${fs}`,
       });
@@ -62,16 +61,6 @@ router.post("/uploaddata", async (req, res) => {
 
     console.log("Image sent to firebase");
 });
-
-// function getUserCellphone() {
-//   console.log('camehere')
-//   const userinfo = async() => await firebase
-//       .firestore()
-//       .collection("users")
-//       .get();
-//       console.log("object==?")
-//       //console.log(userInfo)
-// }
 
 router.get("/getdata", (req, res) => {
   pusher.trigger("my-channel", "my-event-1", "my-channel");
