@@ -15,10 +15,10 @@ const path = require("path");
 router.post("/uploaddata", async (req, res) => {
 
   const { email, longitude, latitude, encodedimage } = req.body;
-  const time = new Date();
+  const time = new Date().toLocaleDateString();
   const imageName = "hiddenimage"+time+".png";
   
-  console.log("file came here");
+  console.log("file came here = time "+time);
   
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/secroicy-b5ba8.appspot.com/o/${imageName}?alt=media`;
     
@@ -28,7 +28,7 @@ router.post("/uploaddata", async (req, res) => {
     const imagePath = path.resolve(__dirname, imageName);
 
     // Pipes an image with "hiddenImage.jpg" as the name. 
-     fs.writeFileSync(imagePath, buffer);
+    fs.writeFileSync(imagePath, buffer);
     console.log(path.resolve(__dirname, imageName))
     var storageref = firebase.storage().bucket();
     
