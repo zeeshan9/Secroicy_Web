@@ -14,7 +14,8 @@ const path = require("path");
 // @access  Private
 router.post("/uploaddata", async (req, res) => {
 
-  const { email, longitude, latitude, time, encodedimage } = req.body;
+  const { email, longitude, latitude, encodedimage } = req.body;
+  const time = new Date();
   const imageName = "hiddenimage"+time+".png";
   
   console.log("file came here");
