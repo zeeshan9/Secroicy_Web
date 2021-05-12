@@ -27,7 +27,7 @@
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.13",
-    "nodemailer": "^6.4.8",
+    "nodemailer": "^6.4.16",
     "pusher": "^3.0.1",
     "request": "^2.88.2",
     "yup": "^0.32.1"
